@@ -25,6 +25,7 @@ NSMutableDictionary *studentInfoDic;
 @property (retain, nonatomic) IBOutlet UIButton *commit;
 @property (retain, nonatomic) NSString *pickerSelectSubject;
 @property (retain, nonatomic) NSString *pickerSelectgrade;
+@property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (retain, nonatomic)NSMutableDictionary *studentInfoDic;
 -(void)getStudentData:(NSMutableDictionary*) input_dic;

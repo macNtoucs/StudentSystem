@@ -22,6 +22,7 @@
 @synthesize studentInfoDic;
 @synthesize pickerSelectSubject;
 @synthesize pickerSelectgrade;
+@synthesize scrollView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -48,6 +49,37 @@
    [createSubject resignFirstResponder];
    [ createSubject_grade resignFirstResponder];
 }
+-(void) slideFrame:(BOOL) up
+{
+    int movementDistance = 0;
+    if (self.interfaceOrientation == UIDeviceOrientationPortrait){
+        movementDistance = 260;
+    }else if(self.interfaceOrientation == UIDeviceOrientationPortraitUpsideDown){
+        movementDistance = -260;
+    }else if(self.interfaceOrientation == UIDeviceOrientationLandscapeLeft){
+        movementDistance = -320;
+    }else{
+        movementDistance = 320;
+    }
+    const float movementDuration = 0.3f; // tweak as needed
+    int movement = (up ? -movementDistance : movementDistance);
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    if (UIDeviceOrientationIsPortrait(self.interfaceOrientation)) {
+        self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    } else {
+        self.view.frame = CGRectOffset(self.view.frame, movement, 0);
+    }
+    [UIView commitAnimations];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    [self slideFrame:YES];
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    [self slideFrame:NO];
+}
 
 -(IBAction)clickHandler:(id)sender
 {
@@ -65,7 +97,7 @@ else {
     newSubject= pickerSelectSubject;
 
     }
-    if (![studentName length]|| ![studentID length]|| [newSubject_grade length])
+    if (![studentName length]|| ![studentID length]|| ![newSubject_grade length])
     {
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"格式錯誤" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -82,6 +114,7 @@ else {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [scrollView setScrollEnabled:YES];
     grade= [NSMutableArray new];
     for (int i = 0 ;i <=100 ; ++i)
         [grade addObject:[NSString stringWithFormat:@"%d",i]];
@@ -106,6 +139,7 @@ else {
     [self setCreateSubject_grade:nil];
     
     [self setCommit:nil];
+    [self setScrollView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -123,6 +157,7 @@ else {
     [createSubject release];
     [createSubject_grade release];
     [commit release];
+    [scrollView release];
     [super dealloc];
 }
 

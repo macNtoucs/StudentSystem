@@ -80,19 +80,27 @@ bool isSectionNumChange=false;
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
-    [database removeAStudentWithSubject:[[StudentsInfoDic allKeys] objectAtIndex:indexPath.section] andName:[[[StudentsInfoDic objectForKey: [[StudentsInfoDic allKeys] objectAtIndex:indexPath.section ]] objectAtIndex: indexPath.row] name]];
-   [tableView beginUpdates];
+   [database removeAStudentWithSubject:[[StudentsInfoDic allKeys] objectAtIndex:indexPath.section] andName:[[[StudentsInfoDic objectForKey: [[StudentsInfoDic allKeys] objectAtIndex:indexPath.section ]] objectAtIndex: indexPath.row] name]];
    
-    [self initData];
-  
-    NSLog(@"%@",[NSArray arrayWithObject:indexPath]);
-    [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    
-   // [tableView reloadData];
-
-    [self.tableView endUpdates];
-   
+    [tableView beginUpdates];
+    NSMutableDictionary *tmp = [StudentsInfoDic mutableCopy];
+    [StudentsInfoDic removeAllObjects];
+     NSString *removeArrKey = [NSString stringWithString: [ [tmp allKeys] objectAtIndex:indexPath.section ] ];
+    NSMutableArray * removeArr= [[tmp objectForKey: [[tmp allKeys] objectAtIndex:indexPath.section ]]mutableCopy] ;
+    [removeArr removeObjectAtIndex:indexPath.row];
+    [tmp setObject:removeArr forKey:removeArrKey];
+    if ( [removeArr count] ){
+        [tableView deleteRowsAtIndexPaths:[[NSArray arrayWithObject:indexPath] retain] withRowAnimation:UITableViewRowAnimationFade];
+        StudentsInfoDic = [tmp mutableCopy];
+        [tableView endUpdates];
+    }
+    else {
+        [tmp removeObjectForKey: removeArrKey ];
+        StudentsInfoDic = [tmp mutableCopy];
+        [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:YES];
+        [tableView endUpdates];
         
+    }
     
 }
 -(void)addStudentItem {
@@ -156,16 +164,10 @@ bool isSectionNumChange=false;
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
     
-    if(isSectionNumChange)
-    {
-        NSLog(@"section num : %i",[[StudentsInfoDic allKeys] count]-1);
-        isSectionNumChange = true;
-        return [[StudentsInfoDic allKeys] count]-1;
-    }
-    else {
+   
          NSLog(@"section num : %i",[[StudentsInfoDic allKeys] count]);
         return [[StudentsInfoDic allKeys] count];
-    }
+   
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
