@@ -17,6 +17,7 @@
 @synthesize AllStudentsInfo;
 @synthesize StudentsInfoDic;
 @synthesize StudentsDicValue;
+bool isSectionNumChange=false;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -29,39 +30,42 @@
 -(id)init{
     database = [DataBaseController new];
     StudentsInfoDic = [NSMutableDictionary new];
-    
+    database = [[DataBaseController alloc]init];
+    StudentsDicValue = [NSMutableArray new];
+    AllStudentsInfo = [NSMutableArray new];
+    AllStudentsInfo = [database readStudentInfo];
+    NSLog(@"%@",AllStudentsInfo);
     for (int i = 0 ; i < 100 ; ++i)
         students[i] = [Student new];
     return self;
 }
 
 -(void)initData{
-    database = [[DataBaseController alloc]init];
-    StudentsDicValue = [NSMutableArray new];
-    AllStudentsInfo = [NSMutableArray array];
-    AllStudentsInfo = [database readStudentInfo];
-    int type=0;
+   int type=0;
     student_count=0;
+    AllStudentsInfo = [database readStudentInfo];
+    [StudentsInfoDic removeAllObjects];
     for (NSString *info in AllStudentsInfo){
        
         switch(type%4){
             case 1:
                students[student_count].name = [NSString stringWithFormat:@"%@",info];
-                [StudentsDicValue addObject:students[student_count].name];
+               // [StudentsDicValue addObject:students[student_count].name];
                 break;
             case 2:
                students[student_count]. ID = [NSString stringWithFormat:@"%@",info];
-                [StudentsDicValue addObject:students[student_count].ID];
+               // [StudentsDicValue addObject:students[student_count].ID];
                 break;
             case 3:
                students[student_count]. grade = [NSString stringWithFormat:@"%@",info];
-                [StudentsDicValue addObject:students[student_count].grade];
+                [StudentsDicValue addObject:students[student_count]];
                  [StudentsInfoDic setValue:StudentsDicValue forKey:students[student_count].subject];
                 ++student_count;
                 break;
             case 0:
                   
                 StudentsDicValue = [[StudentsInfoDic objectForKey:info] mutableCopy];
+                if (!StudentsDicValue) StudentsDicValue = [NSMutableArray new];
                  students[student_count].subject = [NSString stringWithFormat:@"%@",info];
                 break;
         }
@@ -69,12 +73,57 @@
     }
     
 }
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    [database removeAStudentWithSubject:[[StudentsInfoDic allKeys] objectAtIndex:indexPath.section] andName:[[[StudentsInfoDic objectForKey: [[StudentsInfoDic allKeys] objectAtIndex:indexPath.section ]] objectAtIndex: indexPath.row] name]];
+   [tableView beginUpdates];
+   
+    [self initData];
+  
+    NSLog(@"%@",[NSArray arrayWithObject:indexPath]);
+    [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+   // [tableView reloadData];
+
+    [self.tableView endUpdates];
+   
+        
+    
+}
+-(void)addStudentItem {
+    AddStudentViewController *addStudent = [AddStudentViewController new];
+    [addStudent getStudentData:StudentsInfoDic];
+    addStudent.title = @"新增學生資料";
+    [self.navigationController pushViewController:addStudent animated:YES];
+}
+
+-(void)deleteItem{
+    [self.tableView setEditing:!self.tableView.editing animated:YES];
+    if (self.tableView.editing)
+        [self.navigationItem.rightBarButtonItem setTitle:@"Done"];
+    else [self.navigationItem.rightBarButtonItem setTitle:@"Delete"];
+
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self initData];
+    [self.tableView reloadData];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //[DataBaseController EraseAll];
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:@"刪除" style:UIBarButtonItemStyleBordered target:self action:@selector(deleteItem)];
+    [self.navigationItem setRightBarButtonItem:editButton];
     
-    [self initData];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addStudentItem)];
+    [self.navigationItem setLeftBarButtonItem:addButton];
+   
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -89,6 +138,7 @@
     // e.g. self.myOutlet = nil;
 }
 
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
@@ -97,7 +147,7 @@
 #pragma mark - Table view data source
 -(NSString* )tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    
+    NSLog(@"section title : %@",[[StudentsInfoDic allKeys] objectAtIndex:section]);
     return [[StudentsInfoDic allKeys] objectAtIndex:section];
 }
 
@@ -105,14 +155,25 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return [[StudentsInfoDic allKeys] count];
+    
+    if(isSectionNumChange)
+    {
+        NSLog(@"section num : %i",[[StudentsInfoDic allKeys] count]-1);
+        isSectionNumChange = true;
+        return [[StudentsInfoDic allKeys] count]-1;
+    }
+    else {
+         NSLog(@"section num : %i",[[StudentsInfoDic allKeys] count]);
+        return [[StudentsInfoDic allKeys] count];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return student_count;
+    NSLog(@"in section %i row num =   %i",section,[[StudentsInfoDic objectForKey: [[StudentsInfoDic allKeys] objectAtIndex:section]] count]);
+    return [[StudentsInfoDic objectForKey: [[StudentsInfoDic allKeys] objectAtIndex:section]] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -122,8 +183,9 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
     }
-   cell.textLabel.text = [NSString stringWithFormat:@"(%@)  ", [[[StudentsInfoDic allKeys] objectAtIndex:indexPath.section ] objectAtIndex:indexPath.row]];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",students[indexPath.row].grade];
+    NSString *stringInLebelText =  [NSString stringWithFormat:@"(%@)%@" ,[[[StudentsInfoDic objectForKey: [[StudentsInfoDic allKeys] objectAtIndex:indexPath.section ]] objectAtIndex: indexPath.row] ID],[[[StudentsInfoDic objectForKey: [[StudentsInfoDic allKeys] objectAtIndex:indexPath.section ]] objectAtIndex: indexPath.row] name]];
+    cell.textLabel.text = stringInLebelText;
+    cell.detailTextLabel.text = [[[StudentsInfoDic objectForKey: [[StudentsInfoDic allKeys] objectAtIndex:indexPath.section ]] objectAtIndex: indexPath.row] grade];
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:20]; 
     cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];   
     if ([cell.detailTextLabel.text intValue]<60) cell.detailTextLabel.textColor = [UIColor redColor];

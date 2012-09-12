@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D4DC07016005A000045859B /* AddStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4DC06E16005A000045859B /* AddStudentViewController.m */; };
+		6D4DC07116005A000045859B /* AddStudentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D4DC06F16005A000045859B /* AddStudentViewController.xib */; };
 		919907C415FF29570029977A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919907C315FF29570029977A /* UIKit.framework */; };
 		919907C615FF29570029977A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919907C515FF29570029977A /* Foundation.framework */; };
 		919907C815FF29570029977A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919907C715FF29570029977A /* CoreGraphics.framework */; };
@@ -19,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6D4DC06D16005A000045859B /* AddStudentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddStudentViewController.h; sourceTree = "<group>"; };
+		6D4DC06E16005A000045859B /* AddStudentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddStudentViewController.m; sourceTree = "<group>"; };
+		6D4DC06F16005A000045859B /* AddStudentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddStudentViewController.xib; sourceTree = "<group>"; };
 		919907BF15FF29570029977A /* StudentSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		919907C315FF29570029977A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		919907C515FF29570029977A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -54,6 +59,9 @@
 		919907B415FF29570029977A = {
 			isa = PBXGroup;
 			children = (
+				6D4DC06D16005A000045859B /* AddStudentViewController.h */,
+				6D4DC06E16005A000045859B /* AddStudentViewController.m */,
+				6D4DC06F16005A000045859B /* AddStudentViewController.xib */,
 				919907C915FF29570029977A /* StudentSystem */,
 				919907C215FF29570029977A /* Frameworks */,
 				919907C015FF29570029977A /* Products */,
@@ -157,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				919907CE15FF29570029977A /* InfoPlist.strings in Resources */,
+				6D4DC07116005A000045859B /* AddStudentViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +181,7 @@
 				919907DC15FF29910029977A /* DataBaseController.m in Sources */,
 				919907DF15FF29F90029977A /* InfoTableViewController.m in Sources */,
 				919907E615FF2F200029977A /* Student.m in Sources */,
+				6D4DC07016005A000045859B /* AddStudentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +285,7 @@
 				919907D915FF29570029977A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Student.h"
+#import "AddStudentViewController.h"
 @interface InfoTableViewController : UITableViewController{
     Student* students[100]; 
     NSMutableArray *AllStudentsInfo;
