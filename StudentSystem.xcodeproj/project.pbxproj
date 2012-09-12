@@ -1,0 +1,282 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		919907C415FF29570029977A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919907C315FF29570029977A /* UIKit.framework */; };
+		919907C615FF29570029977A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919907C515FF29570029977A /* Foundation.framework */; };
+		919907C815FF29570029977A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919907C715FF29570029977A /* CoreGraphics.framework */; };
+		919907CE15FF29570029977A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 919907CC15FF29570029977A /* InfoPlist.strings */; };
+		919907D015FF29570029977A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 919907CF15FF29570029977A /* main.m */; };
+		919907D415FF29570029977A /* BIDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 919907D315FF29570029977A /* BIDAppDelegate.m */; };
+		919907DC15FF29910029977A /* DataBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919907DB15FF29910029977A /* DataBaseController.m */; };
+		919907DF15FF29F90029977A /* InfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919907DE15FF29F90029977A /* InfoTableViewController.m */; };
+		919907E615FF2F200029977A /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 919907E515FF2F200029977A /* Student.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		919907BF15FF29570029977A /* StudentSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		919907C315FF29570029977A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		919907C515FF29570029977A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		919907C715FF29570029977A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		919907CB15FF29570029977A /* StudentSystem-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StudentSystem-Info.plist"; sourceTree = "<group>"; };
+		919907CD15FF29570029977A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		919907CF15FF29570029977A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		919907D115FF29570029977A /* StudentSystem-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StudentSystem-Prefix.pch"; sourceTree = "<group>"; };
+		919907D215FF29570029977A /* BIDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BIDAppDelegate.h; sourceTree = "<group>"; };
+		919907D315FF29570029977A /* BIDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BIDAppDelegate.m; sourceTree = "<group>"; };
+		919907DA15FF29910029977A /* DataBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseController.h; sourceTree = "<group>"; };
+		919907DB15FF29910029977A /* DataBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseController.m; sourceTree = "<group>"; };
+		919907DD15FF29F90029977A /* InfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoTableViewController.h; sourceTree = "<group>"; };
+		919907DE15FF29F90029977A /* InfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoTableViewController.m; sourceTree = "<group>"; };
+		919907E415FF2F200029977A /* Student.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
+		919907E515FF2F200029977A /* Student.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		919907BC15FF29570029977A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				919907C415FF29570029977A /* UIKit.framework in Frameworks */,
+				919907C615FF29570029977A /* Foundation.framework in Frameworks */,
+				919907C815FF29570029977A /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		919907B415FF29570029977A = {
+			isa = PBXGroup;
+			children = (
+				919907C915FF29570029977A /* StudentSystem */,
+				919907C215FF29570029977A /* Frameworks */,
+				919907C015FF29570029977A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		919907C015FF29570029977A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				919907BF15FF29570029977A /* StudentSystem.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		919907C215FF29570029977A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				919907C315FF29570029977A /* UIKit.framework */,
+				919907C515FF29570029977A /* Foundation.framework */,
+				919907C715FF29570029977A /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		919907C915FF29570029977A /* StudentSystem */ = {
+			isa = PBXGroup;
+			children = (
+				919907D215FF29570029977A /* BIDAppDelegate.h */,
+				919907D315FF29570029977A /* BIDAppDelegate.m */,
+				919907CA15FF29570029977A /* Supporting Files */,
+				919907DA15FF29910029977A /* DataBaseController.h */,
+				919907DB15FF29910029977A /* DataBaseController.m */,
+				919907E415FF2F200029977A /* Student.h */,
+				919907E515FF2F200029977A /* Student.m */,
+				919907DD15FF29F90029977A /* InfoTableViewController.h */,
+				919907DE15FF29F90029977A /* InfoTableViewController.m */,
+			);
+			path = StudentSystem;
+			sourceTree = "<group>";
+		};
+		919907CA15FF29570029977A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				919907CB15FF29570029977A /* StudentSystem-Info.plist */,
+				919907CC15FF29570029977A /* InfoPlist.strings */,
+				919907CF15FF29570029977A /* main.m */,
+				919907D115FF29570029977A /* StudentSystem-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		919907BE15FF29570029977A /* StudentSystem */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 919907D715FF29570029977A /* Build configuration list for PBXNativeTarget "StudentSystem" */;
+			buildPhases = (
+				919907BB15FF29570029977A /* Sources */,
+				919907BC15FF29570029977A /* Frameworks */,
+				919907BD15FF29570029977A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StudentSystem;
+			productName = StudentSystem;
+			productReference = 919907BF15FF29570029977A /* StudentSystem.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		919907B615FF29570029977A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = BID;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 919907B915FF29570029977A /* Build configuration list for PBXProject "StudentSystem" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 919907B415FF29570029977A;
+			productRefGroup = 919907C015FF29570029977A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				919907BE15FF29570029977A /* StudentSystem */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		919907BD15FF29570029977A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				919907CE15FF29570029977A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		919907BB15FF29570029977A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				919907D015FF29570029977A /* main.m in Sources */,
+				919907D415FF29570029977A /* BIDAppDelegate.m in Sources */,
+				919907DC15FF29910029977A /* DataBaseController.m in Sources */,
+				919907DF15FF29F90029977A /* InfoTableViewController.m in Sources */,
+				919907E615FF2F200029977A /* Student.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		919907CC15FF29570029977A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				919907CD15FF29570029977A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		919907D515FF29570029977A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		919907D615FF29570029977A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		919907D815FF29570029977A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StudentSystem/StudentSystem-Prefix.pch";
+				INFOPLIST_FILE = "StudentSystem/StudentSystem-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		919907D915FF29570029977A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StudentSystem/StudentSystem-Prefix.pch";
+				INFOPLIST_FILE = "StudentSystem/StudentSystem-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		919907B915FF29570029977A /* Build configuration list for PBXProject "StudentSystem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				919907D515FF29570029977A /* Debug */,
+				919907D615FF29570029977A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		919907D715FF29570029977A /* Build configuration list for PBXNativeTarget "StudentSystem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				919907D815FF29570029977A /* Debug */,
+				919907D915FF29570029977A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 919907B615FF29570029977A /* Project object */;
+}
